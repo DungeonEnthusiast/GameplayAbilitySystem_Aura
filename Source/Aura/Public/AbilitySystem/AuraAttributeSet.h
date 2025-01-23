@@ -117,13 +117,13 @@ public:
 	void OnRep_Strength(const FGameplayAttributeData& OldStrength) const;
 
 	UFUNCTION()
-	void OnRep_Intelligence(const FGameplayAttributeData& OldStrength) const;
+	void OnRep_Intelligence(const FGameplayAttributeData& OldIntelligence) const;
 
 	UFUNCTION()
-	void OnRep_Resilience(const FGameplayAttributeData& OldStrength) const;
+	void OnRep_Resilience(const FGameplayAttributeData& OldResilience) const;
 
 	UFUNCTION()
-	void OnRep_Vigor(const FGameplayAttributeData& OldStrength) const;
+	void OnRep_Vigor(const FGameplayAttributeData& OldVigor) const;
 
 private:
 
