@@ -10,7 +10,7 @@
 #include "AuraEnemy.generated.h"
 
 class UWidgetComponent;
-class UBehaviorTreeComponent;
+class UBehaviorTree;
 class AAuraAIController;
 /**
  * 
@@ -66,7 +66,7 @@ protected:
 	TObjectPtr<UWidgetComponent> HealthBar;
 
 	UPROPERTY(EditAnywhere, Category = "AI")
-	TObjectPtr<UBehaviorTreeComponent> BehaviorTree;
+	TObjectPtr<UBehaviorTree> BehaviorTree;
 	
 	UPROPERTY()
 	TObjectPtr<AAuraAIController> AuraAIController;
