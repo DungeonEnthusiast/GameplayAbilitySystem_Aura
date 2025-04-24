@@ -44,7 +44,7 @@ void AAuraCharacterBase::MulticastHandleDeath_Implementation()
 	Weapon->SetSimulatePhysics(true);
 	Weapon->SetEnableGravity(true);
 	Weapon->SetCollisionEnabled(ECollisionEnabled::PhysicsOnly);
-
+	
 	GetMesh()->SetSimulatePhysics(true);
 	GetMesh()->SetEnableGravity(true);
 	GetMesh()->SetCollisionEnabled(ECollisionEnabled::PhysicsOnly);
@@ -53,7 +53,6 @@ void AAuraCharacterBase::MulticastHandleDeath_Implementation()
 	GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	Dissolve();
 	bDead = true;
-	
 }
 
 void AAuraCharacterBase::BeginPlay()
@@ -73,7 +72,7 @@ FVector AAuraCharacterBase::GetCombatSocketLocation_Implementation(const FGamepl
 	{
 		return GetMesh()->GetSocketLocation(LeftHandSocketName);
 	}
-	if (MontageTag.MatchesTagExact(GameplayTags.Montage_Attack_RightHand) && IsValid(Weapon))
+	if (MontageTag.MatchesTagExact(GameplayTags.Montage_Attack_RightHand))
 	{
 		return GetMesh()->GetSocketLocation(RightHandSocketName);
 	}
@@ -93,6 +92,11 @@ AActor* AAuraCharacterBase::GetAvatar_Implementation()
 TArray<FTaggedMontage> AAuraCharacterBase::GetAttackMontages_Implementation()
 {
 	return AttackMontages;
+}
+
+UNiagaraSystem* AAuraCharacterBase::GetBloodEffect_Implementation()
+{
+	return BloodEffect;
 }
 
 void AAuraCharacterBase::InitAbilityActorInfo()
@@ -120,7 +124,7 @@ void AAuraCharacterBase::AddCharacterAbilities()
 {
 	UAuraAbilitySystemComponent* AuraASC = CastChecked<UAuraAbilitySystemComponent>(AbilitySystemComponent);
 	if (!HasAuthority()) return;
-	
+
 	AuraASC->AddCharacterAbilities(StartupAbilities);
 }
 

@@ -7,6 +7,7 @@
 
 /**
  * AuraGameplayTags
+ * 
  *  Singleton containing native Gameplay Tags
  */
 
