@@ -3,8 +3,6 @@
 
 #include "AbilitySystem/ModMagCalc/MMC_MaxMana.h"
 
-#include "AbilitySystem/ModMagCalc/MMC_MaxHealth.h"
-
 #include "AbilitySystem/AuraAttributeSet.h"
 #include "Interaction/CombatInterface.h"
 
@@ -19,9 +17,9 @@ UMMC_MaxMana::UMMC_MaxMana()
 
 float UMMC_MaxMana::CalculateBaseMagnitude_Implementation(const FGameplayEffectSpec& Spec) const
 {
-	// Gather tags from source target
+	// Gather tags from source and target
 	const FGameplayTagContainer* SourceTags = Spec.CapturedSourceTags.GetAggregatedTags();
-	const FGameplayTagContainer* TargetTags = Spec.CapturedSourceTags.GetAggregatedTags();
+	const FGameplayTagContainer* TargetTags = Spec.CapturedTargetTags.GetAggregatedTags();
 
 	FAggregatorEvaluateParameters EvaluationParameters;
 	EvaluationParameters.SourceTags = SourceTags;
@@ -36,7 +34,7 @@ float UMMC_MaxMana::CalculateBaseMagnitude_Implementation(const FGameplayEffectS
 	{
 		PlayerLevel = ICombatInterface::Execute_GetPlayerLevel(Spec.GetContext().GetSourceObject());
 	}
-
+	
 	return 50.f + 2.5f * Int + 15.f * PlayerLevel;
 }
 
