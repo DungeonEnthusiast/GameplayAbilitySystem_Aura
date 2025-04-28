@@ -1,4 +1,4 @@
-// Copyright RE-Design
+// Copyright Druid Mechanics
 
 #pragma once
 
@@ -34,5 +34,4 @@ public:
 	TArray<FAuraLevelUpInfo> LevelUpInformation;
 
 	int32 FindLevelForXP(int32 XP) const;
-	
 };

@@ -1,10 +1,10 @@
-// Copyright RE-Design
+// Copyright Druid Mechanics
 
 #pragma once
 
 #include "CoreMinimal.h"
-#include "AuraInputConfig.h"
 #include "EnhancedInputComponent.h"
+#include "AuraInputConfig.h"
 #include "AuraInputComponent.generated.h"
 
 /**
@@ -37,7 +37,6 @@ void UAuraInputComponent::BindAbilityActions(const UAuraInputConfig* InputConfig
 			{
 				BindAction(Action.InputAction, ETriggerEvent::Completed, Object, ReleasedFunc, Action.InputTag);
 			}
-
 			
 			if (HeldFunc)
 			{

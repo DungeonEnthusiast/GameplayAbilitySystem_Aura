@@ -1,4 +1,4 @@
-// Copyright RE-Design
+// Copyright Druid Mechanics
 
 
 #include "AbilitySystem/AsyncTasks/WaitCooldownChange.h"
@@ -9,18 +9,20 @@ UWaitCooldownChange* UWaitCooldownChange::WaitForCooldownChange(UAbilitySystemCo
 	UWaitCooldownChange* WaitCooldownChange = NewObject<UWaitCooldownChange>();
 	WaitCooldownChange->ASC = AbilitySystemComponent;
 	WaitCooldownChange->CooldownTag = InCooldownTag;
-
+	
 	if (!IsValid(AbilitySystemComponent) || !InCooldownTag.IsValid())
 	{
 		WaitCooldownChange->EndTask();
 		return nullptr;
 	}
-	//To know when a cooldown has ended (cooldown tag has been removed) 
+
+	// To know when a cooldown has ended (Cooldown Tag has been removed)
 	AbilitySystemComponent->RegisterGameplayTagEvent(
 		InCooldownTag,
 		EGameplayTagEventType::NewOrRemoved).AddUObject(
 			WaitCooldownChange,
 			&UWaitCooldownChange::CooldownTagChanged);
+
 	// To know when a cooldown effect has been applied
 	AbilitySystemComponent->OnActiveGameplayEffectAddedDelegateToSelf.AddUObject(WaitCooldownChange, &UWaitCooldownChange::OnActiveEffectAdded);
 
@@ -44,7 +46,7 @@ void UWaitCooldownChange::CooldownTagChanged(const FGameplayTag InCooldownTag, i
 	}
 }
 
-void UWaitCooldownChange::OnActiveEffectAdded(UAbilitySystemComponent* TargetASC, const FGameplayEffectSpec& SpecApplied, FActiveGameplayEffectHandle ActiveGameplayEffectHandle)
+void UWaitCooldownChange::OnActiveEffectAdded(UAbilitySystemComponent* TargetASC, const FGameplayEffectSpec& SpecApplied, FActiveGameplayEffectHandle ActiveEffectHandle)
 {
 	FGameplayTagContainer AssetTags;
 	SpecApplied.GetAllAssetTags(AssetTags);
@@ -66,10 +68,8 @@ void UWaitCooldownChange::OnActiveEffectAdded(UAbilitySystemComponent* TargetASC
 					TimeRemaining = TimesRemaining[i];
 				}
 			}
-
+			
 			CooldownStart.Broadcast(TimeRemaining);
 		}
 	}
 }
-
-

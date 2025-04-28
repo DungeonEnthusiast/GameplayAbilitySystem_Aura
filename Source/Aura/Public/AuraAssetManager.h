@@ -1,4 +1,4 @@
-// Copyright RE-Design
+// Copyright Druid Mechanics
 
 #pragma once
 
@@ -20,5 +20,4 @@ public:
 protected:
 
 	virtual void StartInitialLoading() override;
-	
 };

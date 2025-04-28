@@ -1,4 +1,4 @@
-// Copyright RE-Design
+// Copyright Druid Mechanics
 
 #pragma once
 
@@ -6,7 +6,6 @@
 #include "Engine/DataAsset.h"
 #include "GameplayTagContainer.h"
 #include "AuraInputConfig.generated.h"
-
 
 USTRUCT(BlueprintType)
 struct FAuraInputAction
@@ -33,5 +32,4 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	TArray<FAuraInputAction> AbilityInputActions;
-	
 };

@@ -1,4 +1,4 @@
-// Copyright RE-Design
+// Copyright Druid Mechanics
 
 
 #include "AbilitySystem/Data/AttributeInfo.h"
